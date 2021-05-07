@@ -20,13 +20,13 @@ const AppMain:FC = () => {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/page1">
+          <Route path="/page/page1">
             <Page1 />
           </Route>
-          <Route path="/page2">
+          <Route path="/page/page2">
             <Page2 />
           </Route>
-          <Route path="/page3">
+          <Route path="/page/page3">
             <Page3 />
           </Route>
         </Switch>
