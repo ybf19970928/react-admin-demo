@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { ITodo } from '../../../../../redux/states/todoList'
 import { Checkbox, Button } from 'antd';
 import { COMPLETED_ITEM, REMOVE_ITEM } from '../../../../../redux/actions/todoList';
-import styles from './todoList.module.css'
+import styles from './todoList.module.scss'
 
 interface IPropsType {
     todoItem: ITodo

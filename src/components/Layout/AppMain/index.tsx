@@ -14,6 +14,7 @@ const Home = lazy(() => import('../../../views/Home'))
 const Page1 = lazy(() => import('../../../views/page1'))
 const Page2 = lazy(() => import('../../../views/page2'))
 const Page3 = lazy(() => import('../../../views/page3'))
+const NoFoundPage = lazy(() => import('../../../views/error-page/404'))
 
 const { Content  } = Layout;
 const AppMain:FC = () => {
@@ -63,9 +64,8 @@ const AppMain:FC = () => {
             <Route exact path="/page/page3">
               <Page3 />
             </Route>
-            <Route exact path="">
-              <Redirect to={'/404'} />
-            </Route>
+            <Route path='/404' component={NoFoundPage} />
+            <Redirect from='*' to='/404' />
           </Switch>
         </Suspense>
       </Content>

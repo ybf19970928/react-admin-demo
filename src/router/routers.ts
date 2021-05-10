@@ -2,6 +2,7 @@
 export interface IRouter {
     title: string,
     key: string,
+    hidden?: boolean,
     children?: IRouter[]
 }
 export const routers: IRouter[] = [
@@ -19,13 +20,7 @@ export const routers: IRouter[] = [
             },
             {
                 title: '测试侧边栏2',
-                key: '/page/page2',
-                children: [
-                    {
-                        title: '测试侧边栏2-2',
-                        key: '/page/page2/page2-2'
-                    }
-                ]
+                key: '/page/page2'
             },
             {
                 title: '测试侧边栏3',
@@ -50,5 +45,10 @@ export const routers: IRouter[] = [
                 key: '/tools/tools3'
             },
         ]
-    }
+    },
+    {
+        title: '404',
+        key: '/404',
+        hidden: true
+    },
 ]

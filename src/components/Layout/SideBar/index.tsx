@@ -51,7 +51,7 @@ const SideBar:FC = () => {
         <Menu theme="dark" selectedKeys={[useLocation().pathname]}
         openKeys={currentOpenKeys} onOpenChange={openChange}
         mode="inline">
-          { routers && routers.map(route => {
+          { routers && routers.filter(route => !route.hidden).map(route => {
               return route.children?
                 renderSubMenu(route, route.children)
                 :
