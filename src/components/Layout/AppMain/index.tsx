@@ -1,17 +1,19 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState, Suspense, lazy  } from 'react';
 import { Layout, Breadcrumb } from 'antd';
 import { useLocation } from 'react-router';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux'
-import Home from '../../../views/Home'
-import Page1 from '../../../views/page1'
-import Page2 from '../../../views/page2'
-import Page3 from '../../../views/page3'
 import {
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 import { RootState } from '../../../redux';
+
+const Home = lazy(() => import('../../../views/Home'))
+const Page1 = lazy(() => import('../../../views/page1'))
+const Page2 = lazy(() => import('../../../views/page2'))
+const Page3 = lazy(() => import('../../../views/page3'))
 
 const { Content  } = Layout;
 const AppMain:FC = () => {
@@ -33,7 +35,7 @@ const AppMain:FC = () => {
   }, [pathname])
     return (
         <Content style={{ margin: '0 16px' }}>
-        <Breadcrumb style={{ margin: '16px 0' }} separator=">">
+        <Breadcrumb style={{ margin: '16px 0', cursor: 'pointer' }} separator=">">
         <Breadcrumb.Item onClick={handleCollapsed}>
          {isCollapsed ? 
          <MenuFoldOutlined style={{ fontSize: '16px', color: '#08c' }} /> 
@@ -47,21 +49,25 @@ const AppMain:FC = () => {
             })
           }
         </Breadcrumb>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/page/page1">
-            <Page1 />
-          </Route>
-          <Route exact path="/page/page2">
-            <Page2 />
-          </Route>
-          <Route exact path="/page/page3">
-            <Page3 />
-          </Route>
-          <Route exact path="" render={() => <h1>404页面</h1>} />
-        </Switch>
+        <Suspense fallback={<div>loading...</div>}>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/page/page1">
+              <Page1 />
+            </Route>
+            <Route exact path="/page/page2">
+              <Page2 />
+            </Route>
+            <Route exact path="/page/page3">
+              <Page3 />
+            </Route>
+            <Route exact path="">
+              <Redirect to={'/404'} />
+            </Route>
+          </Switch>
+        </Suspense>
       </Content>
     )
 }

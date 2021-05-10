@@ -10,7 +10,7 @@ import logo from '../../../logo.svg';
 import { Link, useLocation} from 'react-router-dom'
 import { routers, IRouter } from '../../../router/routers'
 
-const {  Sider } = Layout;
+const { Sider } = Layout;
 const { SubMenu } = Menu;
 
 const SideBar:FC = () => {
@@ -42,7 +42,7 @@ const SideBar:FC = () => {
   }
   useEffect(() => {
     setOpenKeys([pathname.split('/').slice(0, pathname.split('/').length-1).join('/')])
-  },[pathname])
+  },[pathname, isCollapsed])
     return (
         <Sider collapsible trigger={null} collapsed={isCollapsed}>
         <div className="logo" style={{height: '60px', display: 'flex', justifyContent: 'center'}}>
