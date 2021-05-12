@@ -1,7 +1,7 @@
 import { iscollapsed } from '../states/collapsed'
 import { CHANGE_COLLAPSED } from '../actions/changeCollapsed'
 
-interface IAction {
+export interface IAction {
     type: string
 }
 const changeCollapsed = (state = iscollapsed, action: IAction) => {

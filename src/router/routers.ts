@@ -1,10 +1,5 @@
+import { IRouter } from "../redux/states/routers";
 
-export interface IRouter {
-    title: string,
-    key: string,
-    hidden?: boolean,
-    children?: IRouter[]
-}
 export const routers: IRouter[] = [
     {
         title: '首页',

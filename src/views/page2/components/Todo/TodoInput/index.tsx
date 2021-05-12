@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import { Input } from 'antd';
 import { useDispatch } from 'react-redux'
-import { ADD_TODO_ITEM } from '../../../../../redux/actions/todoList';
+import { addTodoItem } from '../../../../../redux/actions/todoList';
 import { ITodo } from '../../../../../redux/states/todoList';
 const { Search } = Input;
 
@@ -18,10 +18,7 @@ const TodoInput: FC= () => {
                  constext: inputValue,
                  completed: false
             }
-            dispatch({
-                type: ADD_TODO_ITEM,
-                item
-            })
+            dispatch(addTodoItem(item))
             setInputValue('')
         }
     }

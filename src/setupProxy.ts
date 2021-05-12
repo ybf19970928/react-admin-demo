@@ -1,12 +1,12 @@
-import { createProxyMiddleware, RequestHandler} from 'http-proxy-middleware';
-module.exports = function (app: { use: (arg0: string, arg1: RequestHandler) => void; }) {
+import { createProxyMiddleware} from 'http-proxy-middleware';
+module.exports = function (app: any) {
     app.use(
         '/api',
         createProxyMiddleware({
             target: 'http://localhost:9527',
             changeOrigin: true,
             pathRewrite: {
-                '^/api': '',
+                '/api': '',
             }
         })
     )

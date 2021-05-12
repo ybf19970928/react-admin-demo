@@ -3,6 +3,7 @@ import { Layout, Breadcrumb } from 'antd';
 import { useLocation } from 'react-router';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux'
+import { scrollTo } from '../../../utils/scrollTo'
 import {
   Switch,
   Route,
@@ -33,6 +34,7 @@ const AppMain:FC = () => {
     }else{
       setRouteMatched(pathname.slice(1).split('/'))
     }
+    scrollTo()
   }, [pathname])
     return (
         <Content style={{ margin: '0 16px' }}>

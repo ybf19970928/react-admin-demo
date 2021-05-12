@@ -8,7 +8,8 @@ import {
 import { RootState } from '../../../redux';
 import logo from '../../../logo.svg';
 import { Link, useLocation} from 'react-router-dom'
-import { routers, IRouter } from '../../../router/routers'
+import { routers } from '../../../router/routers'
+import { IRouter } from '../../../redux/states/routers';
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;

@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../../../redux'
 import Item from './Item'
-const TodoList: FC = () => {
+const TodoList: FC = React.memo(() => {
     const todoItem = useSelector((state: RootState) => state.todoItem)
     return (
         <>
@@ -13,5 +13,5 @@ const TodoList: FC = () => {
         }) }
         </>
     )
-}
+})
 export default TodoList

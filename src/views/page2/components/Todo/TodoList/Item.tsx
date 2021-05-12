@@ -8,9 +8,9 @@ import styles from './todoList.module.scss'
 interface IPropsType {
     todoItem: ITodo
 }
-const Item:FC<IPropsType> = (item) => {
-    const dispatch = useDispatch()
 
+const Item:FC<IPropsType> = ({ todoItem }) => {
+    const dispatch = useDispatch()
     const onChange = (item: ITodo) => {
         dispatch({
             type: COMPLETED_ITEM,
@@ -25,10 +25,10 @@ const Item:FC<IPropsType> = (item) => {
     }
     return (
         <div>
-            <Checkbox onChange={() => onChange(item.todoItem)} style={{fontSize: 24}}>
-                <span className={ item.todoItem.completed ? styles['completed'] : ''}>{item.todoItem.constext}</span>    
+            <Checkbox onChange={() => onChange(todoItem)} style={{fontSize: 24}}>
+                <span className={ todoItem.completed ? styles['completed'] : ''}>{todoItem.constext}</span>    
             </Checkbox> 
-            <Button danger onClick={() => handeDelete(item.todoItem)}>删除</Button>
+            <Button danger onClick={() => handeDelete(todoItem)}>删除</Button>
         </div>
     )
 }
