@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, ChangeEvent } from 'react';
 import { Input } from 'antd';
 import { useDispatch } from 'react-redux'
 import { addTodoItem } from '../../../../../redux/actions/todoList';
@@ -8,9 +8,10 @@ const { Search } = Input;
 const TodoInput: FC= () => {
     const [inputValue, setInputValue] = useState('')
     const dispatch = useDispatch()
-    const handleChange = (e: any) => {
-        setInputValue(e.target.value)
+    const handleChange = (event: ChangeEvent<HTMLInputElement> | undefined) => {
+        setInputValue(event!.target.value)
     }
+
     const handleAdd = () => {
         if (inputValue.trim().length){
             const item: ITodo = {
@@ -22,6 +23,10 @@ const TodoInput: FC= () => {
             setInputValue('')
         }
     }
+    const onSearch = (value:string, event: ChangeEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement> | React.MouseEvent<HTMLElement, MouseEvent> | undefined) => {
+        if (!value) return
+        handleAdd()
+    }
     return (
         <Search
         placeholder="input search text"
@@ -29,7 +34,7 @@ const TodoInput: FC= () => {
         enterButton="Search"
         size="large"
         value={inputValue}
-        onSearch={handleAdd}
+        onSearch={onSearch}
         onChange={handleChange}
         onPressEnter={handleAdd}
       />

@@ -38,8 +38,8 @@ const SideBar:FC = () => {
       </SubMenu>
     )
   }
-  const openChange  = (openKeys: any[]) => {
-    setOpenKeys(openKeys)
+  const openChange  = (openKeys: React.Key[]):void => {
+    setOpenKeys(openKeys as string[])
   }
   useEffect(() => {
     setOpenKeys([pathname.split('/').slice(0, pathname.split('/').length-1).join('/')])

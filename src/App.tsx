@@ -4,9 +4,9 @@ import './App.css'
 
 const App: FC = () => {
   return (
-    <>
-    <LayoutComponent />
-    </>
+    <React.Fragment>
+      <LayoutComponent />
+    </React.Fragment>
   );
 }
 

@@ -6,3 +6,10 @@ export function testApi(){
         url: '/api/user'
     })
 }
+
+export function testList() {
+    return request({
+        method: 'get',
+        url: '/getlist'
+    })
+}
