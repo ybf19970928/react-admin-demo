@@ -1,12 +1,16 @@
 import React, { FC } from 'react';
 import LayoutComponent from './components/Layout'
+import {
+  BrowserRouter as Router
+} from 'react-router-dom'
 import './App.css'
-
 const App: FC = () => {
   return (
-    <React.Fragment>
-      <LayoutComponent />
-    </React.Fragment>
+    <Router>
+      <React.Fragment>
+          <LayoutComponent />
+      </React.Fragment>
+    </Router>
   );
 }
 
